@@ -1,0 +1,80 @@
+<div class="container pt-5 pb-5">
+
+
+  <div class="box">
+
+    <div style="margin-left: 950px; ">
+      <button class="btn btn-outline-success" (click)="add()">Add Category</button>
+
+    </div>
+    <table style="justify-content: space-between; align-items: end;" class="table">
+
+
+      <thead>
+        <tr>
+          <th scope="col"><input type="checkbox" [(ngModel)]="isSelected" (ngModelChange)="onCheckall()"></th>
+          <th scope="col">Name</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of mobileArr">
+          <td scope="row">
+            <input type="checkbox" [(ngModel)]="item.isChecked">
+          </td>
+          <td>{{item.itemname}}</td>
+
+          <td>
+
+
+
+            <button class="btn btn-primary" (click)="onEdit(item)"> Edit </button> &nbsp;
+            <button class="btn btn-danger" (click)="onremove(item.id)"> Delete </button>
+
+
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+    <div style="height: 100vh;" class="modal" id="category">
+      <div class="modal-dialog" style="height: 100vh;">
+        <div class="modal-content">
+
+          <div class="modal-body">
+            <form class="row g-3 " #userForm="ngForm">
+              <div class="col-md-4">
+
+
+                <input type="text" name="fullname" placeholder="Category" class="form-control" id="validationCustom01"
+                  [(ngModel)]="mobile.itemname">
+
+              </div>
+
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="save(userForm)" *ngIf="mobile.id==0"> Save
+            </button>
+            <button type="button" class="btn btn-primary" (click)="onupdate()" *ngIf="mobile.id!==0"> Update </button>
+
+            <button type="button" class="btn btn-secondary" (click)="onCloseModel()"
+              data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
